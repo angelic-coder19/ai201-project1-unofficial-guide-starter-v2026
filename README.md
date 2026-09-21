@@ -21,11 +21,8 @@
 
 ## What This Does
 
-<!-- Three or four sentences. Which corpus you picked, and the kinds of
-     questions your system answers. Write it for someone who has never seen
-     this repo.
+     I picked the city_guides corpus, which contains detailed information about different cities, modes of transportation, physical features, places to see, the time to visit and the varying ease with wich to access each city . My system is designed to answer questions related to the different cities, providing accurate and relevant information based on the documents in the city_guides corpus.
 
-     Milestone 5. -->
 
 ## Chunking Strategy
 
