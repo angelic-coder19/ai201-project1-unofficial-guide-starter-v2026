@@ -23,9 +23,7 @@ For at least 4 of my 5 test questions, the retrieved chunks include one that
 contains the answer.
 
 **Why this target:**
-<!-- e.g. "One of my questions is about a topic only two documents mention, so
-     I expect that one to be hard." -->
-
+All the questions I picked are clearly answerable from the city_guides corpus. The system should be able to retrieve the relevant chunks for all of them, so I set the target at 4 of 5.
 ---
 
 ## 2. Every answer names a source
@@ -35,6 +33,7 @@ Every answer the system produces names at least one source document.
 **Why this target:**
 <!-- Why all five and not four? What about your setup makes that achievable —
      or what would have to go wrong for it not to be? -->
+Every question in my test set has a clear source in the city_guides corpus. The system should be able to identify and cite at least one source document source for each answer 
 
 ---
 
@@ -53,9 +52,11 @@ in at least 4 of 5 tries.
 <!-- What did your distances look like when you set the cutoff in Milestone 4?
      Was there a clean gap, or did the two groups overlap? -->
 
+
 ---
 
 ## 4. Something about your chunks
+At least 4 of 5 sampled chunks contain complete thoughts, with no sentence cut off at either end.
 
 <!-- YOU WRITE THIS ONE.
 
@@ -72,12 +73,14 @@ in at least 4 of 5 tries.
 
 
 **Why this target:**
-
+I chose 4 of 5 because the corpus contains guides with complete sentences and sections, so most chunks should preserve complete thoughts. Allowing one imperfect chunk accounts for unavoidable splits at document boundaries while still requiring generally readable chunks.
 
 
 ---
 
 ## 5. Your choice
+
+For at least 4 of 5 in-corpus questions, the system gives an answer containing the expected answer phrase from questions.py, rather than refusing.
 
 <!-- YOU WRITE THIS ONE TOO.
 
@@ -90,8 +93,7 @@ in at least 4 of 5 tries.
 
 
 **Why this target:**
-
-
+I chose 4 of 5 because the five in-corpus questions have specific expected answers recorded in questions.py. The system should answer most of them correctly, while allowing one failure caused by paraphrasing, retrieval, or generation.
 
 ---
 
