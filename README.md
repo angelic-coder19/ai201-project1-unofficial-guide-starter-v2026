@@ -26,8 +26,8 @@
 
 ## Chunking Strategy
 
-**Chunk size:**
-**Overlap:**
+**Chunk size: 200**
+**Overlap: 50**
 
 <!-- What about YOUR documents made you pick these numbers? Short posts and
      long sectioned guides don't want the same chunking, and "800 seemed
@@ -38,8 +38,8 @@
      more than pretending you got it right first time.
 
      Milestone 3. -->
-
-## Sample Chunks
+I played around with a number of chuck sizes, tested the results with different questions and I ultimately decided to use 200 characters as the chunck size. I chose this because  because each chunk had roughly one specific point of information. Given that I used the city guides corpus, a 200 character chunk size worked well because each chunk focused on one aspect of a city's guide. a 50 character overlap made sure that information was not to crowded from other unrelated chuncks and was also enough to maintain context from one chunk to the next.
+One huge improvement I noticed was that 200 character chunk size allowed one specific question to be answered accurately: both smaller and larger chunk sizes failed to find the specific answer within the corpus inspite of the distance being well below the cut off. 
 
 <!-- Five chunks, pasted as text. Label each one and name the file it came from
      AND the function that produced it — the grader checks your code against
