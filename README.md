@@ -140,7 +140,7 @@ long does it take to drive from Brightwater to Corry Vale?**
      Milestone 4. -->
 
 | Question | In corpus? | Best distance |
-|---|---|---|
+|"What city is the considered the regional hub where all trains meet?|Yes|0.568|
 |  |  |  |
 
 ## How I Used AI
@@ -185,15 +185,30 @@ long does it take to drive from Brightwater to Corry Vale?**
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
+| 4. Complete chunks | 4 of 5 | 1 of 5 | 1 of 5 | 1 of 5 | MISSED |
+| 5. Correct in-corpus answers | 4 of 5 | 4 of 5 | 4 of 5 | 4 of 5 | MET |
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
      Name the file and function that produced it. -->
+
+The run was produced by `run_eval.py::main`, using `store.py::search` and
+`chunker.py::split_documents`, with a 0.6 relevance cutoff. The five best
+distances were 0.309, 0.568, 0.439, 0.385, and 0.487. The gate refused all
+five out-of-scope questions; their distances ranged from 0.830 to 0.988.
+
+The answers for Corry Vale, Marchwood, Givens Mill, and the weather-dependent
+walking paths matched the expected answers and named sources. For example:
+
+> Marchwood is considered the regional hub where every railway line meets.
+> This information comes from `guide_marchwood.md`.
+
+The Kestrelford answer was the only failure. It said that the documents did
+not provide a complete list of attractions, even though `guide_kestrelford.md`
+was retrieved.
 
 ## Verdicts
 
@@ -208,11 +223,11 @@ long does it take to drive from Brightwater to Corry Vale?**
 
 | # | Criterion | Verdict | How I decided |
 |---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
+| 1 | Retrieved chunk contains the answer | MET | All five questions retrieved a relevant source chunk, exceeding the target of four. |
+| 2 | Every answer names a source | MET | All fifteen generated answers named at least one source document. |
+| 3 | Gate stops out-of-corpus questions | MET | The gate refused 5 of 5 out-of-scope questions, exceeding the target of four. |
+| 4 | Complete chunks | MISSED | Only 1 of 5 sampled chunks ended at a complete thought; several ended mid-word or mid-sentence. |
+| 5 | Correct in-corpus answers | MET | Four of the five questions matched their expected answers in every run. |
 
 ## Diagnoses
 
@@ -234,11 +249,28 @@ long does it take to drive from Brightwater to Corry Vale?**
 
      Milestone 3. -->
 
+Criterion 4 was missed at the chunking stage. The current 500-character
+chunks often preserve the relevant topic, but fixed-size splitting cuts some
+sentences at the boundary. Kestrelford was not a retrieval failure: its source
+was retrieved, but generation produced an incomplete answer. That makes the
+Kestrelford failure primarily a generation issue.
+
 ## The Improvement
 
 **What I changed:**
 
+I compared a 200-character chunk size with 50-character overlap against the
+500-character size with 100-character overlap. The smaller chunks returned
+the exact Kestrelford attractions answer, but simple questions such as Corry
+Vale became less reliable. I kept 500/100 because it answered 4 of 5 test
+questions and was the better overall balance.
+
 **Why I picked it:**
+
+The city guides contain short sections with related facts. A 500-character
+chunk usually keeps one focused point together, while 100 characters preserve
+some context across boundaries. The 200/50 setting was more precise for one
+question but harmed other retrieval results.
 
 <!-- Connect it to a specific diagnosis above in one sentence. If you can't,
      you picked a fix because it sounded impressive. -->
@@ -250,13 +282,20 @@ long does it take to drive from Brightwater to Corry Vale?**
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
+| 4. Complete chunks | 4 of 5 | 1 of 5 | 1 of 5 | 1 of 5 | MISSED |
+| 5. Correct in-corpus answers | 4 of 5 | 4 of 5 | 4 of 5 | 4 of 5 | MET |
 
 **Did it help?**
+
+Yes, overall. The 500/100 configuration answered four of five in-corpus
+questions, named sources in every answer, and refused all five out-of-corpus
+questions. The 200/50 configuration was better for Kestrelford alone, but it
+made simpler questions such as Corry Vale fail, so I kept the more balanced
+setting. Chunk completeness is still below target and needs a structure-aware
+split on headings or sentence boundaries.
 
 <!-- Say plainly whether it did, and how you know. If it made things worse,
      say that — a change that backfired, honestly reported, earns full credit
