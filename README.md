@@ -120,9 +120,10 @@ Brightwater station outside weekday mornings; the machine on the platform take
 <!-- One complete question and answer, pasted as text, with the source line
      visible. Milestone 4. -->
 
-**Question:**
+**Question: How 
+long does it take to drive from Brightwater to Corry Vale?**
 
-**Answer:**
+**Answer: Driving from Brightwater takes 35 minutes on a good road as far as the valley mouth and then 20 more on a poor one.**
 
 ```
 ```
