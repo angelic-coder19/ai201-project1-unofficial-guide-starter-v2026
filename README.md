@@ -316,7 +316,12 @@ split on headings or sentence boundaries.
 
      Milestone 5. -->
 
+     Some of the chunks are cutoff at the beginning or the end. Finding the perfect chunk size and overlap is still a challenge given the structure of the city guides corpus. This is not true for all of the chunks though, some are have the perfect size and context. 
+     I could not completely solve this problem because it would require a more sophisticated approach to chunking that takes into account the structure and content of the city guides corpus.
+
 ## What I'd Do Differently
+
+I would experiment with different chunking strategies that take into account the semantic boundaries of the text, such as splitting on sentences or paragraphs, rather than fixed character lengths.
 
 <!-- Knowing what you know now — which of your five criteria would you write
      differently, and why?
