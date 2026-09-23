@@ -155,8 +155,10 @@ long does it take to drive from Brightwater to Corry Vale?**
      Milestone 5. -->
 
 **1.**
+I asked Copilot to tell me what the best chunk size I could use given the city_guides copus I was using. It recommended 800 and with an overlap of 150. This was the exact initial configuration. I ignored it and tried out several other configuarations: 400, 1000, 180, 500 and 200. I was not satisfied with the size of the chunks and how much extra scope they had. So I decided to experiment with all the sizes I listed. This allowed me to discover that one of my hardest questions was answered accurately with a size of 200. I would have not found this out if it just accepted the initial recommendation. 
 
 **2.**
+Since I had ran different trials with different chuk sizes and overlaps, I decided to automate the filling in of the answers and into the readme. I thought this would be duplication of work that I already did when I did my trials. I knew what the distances were for each of my questions because I tried to see how a new chunk size or overlap would affect the responses. Since learning had already happened, I was okay with having copilot automate the repetitive queries and data entry.
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
