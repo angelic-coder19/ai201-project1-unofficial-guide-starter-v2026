@@ -38,8 +38,8 @@
      more than pretending you got it right first time.
 
      Milestone 3. -->
-I played around with a number of chuck sizes, tested the results with different questions and I ultimately decided to use 200 characters as the chunck size. I chose this because  because each chunk had roughly one specific point of information. Given that I used the city guides corpus, a 200 character chunk size worked well because each chunk focused on one aspect of a city's guide. a 50 character overlap made sure that information was not to crowded from other unrelated chuncks and was also enough to maintain context from one chunk to the next.
-One huge improvement I noticed was that 200 character chunk size allowed one specific question to be answered accurately: both smaller and larger chunk sizes failed to find the specific answer within the corpus inspite of the distance being well below the cut off. 
+I played around with a number of chuck sizes, tested the results with different questions and I ultimately decided to use 500 characters as the chunck size. I chose this because  because each chunk had roughly one specific point of information. Given that I used the city guides corpus, a 500 character chunk size worked well because each chunk focused on one aspect of a city's guide. a 100 character overlap made sure that information was not to crowded from other unrelated chuncks and was also enough to maintain context from one chunk to the next.
+One huge improvement I noticed was that 500 character chunk size allowed one specific question to be answered accurately: both smaller and larger chunk sizes failed to find the specific answer within the corpus inspite of the distance being well below the cut off. 
 
 <!-- Five chunks, pasted as text. Label each one and name the file it came from
      AND the function that produced it — the grader checks your code against
@@ -53,26 +53,66 @@ One huge improvement I noticed was that 200 character chunk size allowed one spe
 **Chunk 1** — source: `` — produced by: ``
 
 ```
+# Getting around the region with limited mobility
+
+An honest assessment rather than a promotional one. Some of these places are
+difficult and it is better to know in advance.
+
+## Straightforward
+
+**Thornby Wells** is the easiest town in the region. It is flat, compact, and
+everything is within three minutes of everything else. Parking is free for two
+hours anywhere in town and the station is central. The pump room and gardens
+are level throughout.
+
+**Marchwood** has a modern tram network with le
 ```
 
 **Chunk 2** — source: `` — produced by: ``
 
 ```
+cheese and little else, and it closes at 4pm. Bring supplies; this is not a place with options.
+
+## What to see
+
+The valley itself is the attraction. The footpath network is dense and well marked, an
 ```
 
 **Chunk 3** — source: `` — produced by: ``
 
 ```
+ital is in Brightwater; there is
+a minor injuries unit locally with limited hours.
 ```
 
 **Chunk 4** — source: `` — produced by: ``
 
 ```
+an climb for £2. The old trackbed walk runs six miles to the next village along an easy gradient and is the best half-day here.
+
+## Where to stay
+
+Two inns on the square and a handful of rooms above the pubs. Booking ahead matters between May and September andnot at all otherwise. There is no accommodation of any kind within four miles of the town in either direction.
+
+## When to goJ
+
+Late spring and early autumn. The Saturday market runs year-round but is much reduced from November to February
 ```
 
 **Chunk 5** — source: `` — produced by: ``
 
 ```
+# Getting around the region
+
+## The railway
+
+The line runs along the river valley, connecting Brightwater to the regional
+hub in 50 minutes. Eleven services a day on weekdays, six on Sundays. The line
+north of Brightwater closed in 1963 and everything beyond it is bus or car.
+
+Tickets are cheaper booked the day before than on the day, and considerably
+cheaper than that booked a week ahead. There is no ticket office at
+Brightwater station outside weekday mornings; the machine on the platform take
 ```
 
 ## Sample Answer
